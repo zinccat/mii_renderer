@@ -1,0 +1,15 @@
+BabyHairNameFatherFemale: FemaleFlat
+BabyHairNameFatherMale: MalePerppy
+BabyHairNameMotherFemale: FemaleFlat
+BabyHairNameMotherMale: MalePerppy
+Category: HairFront
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairFront071_Uit
+FileName: HairFront071
+HairGender: !u 0x0ddcbe76
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairFront/MiiHairFront071/output/MiiHairFront071.fmdb }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairFront/MiiHairFront071/output/MiiHairFrontHat071.fmdb }
+PartsIndex: 71

@@ -1,0 +1,15 @@
+BabyHairNameFatherFemale: FemaleBob
+BabyHairNameFatherMale: MaleBob
+BabyHairNameMotherFemale: FemaleBob
+BabyHairNameMotherMale: MaleBob
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairBack047_Uit
+FileName: HairBack047
+IsAttachableHairFront: true
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack047/output/MiiHairBack047.fmdb }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack047/output/MiiHairBackHat047.fmdb }
+PartsIndex: 310

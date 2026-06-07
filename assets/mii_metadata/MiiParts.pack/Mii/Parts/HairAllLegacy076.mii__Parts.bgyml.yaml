@@ -1,0 +1,14 @@
+BabyHairNameFatherFemale: FemaleNaughty
+BabyHairNameFatherMale: MaleNaughty
+BabyHairNameMotherFemale: FemaleNaughty
+BabyHairNameMotherMale: MaleNaughty
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_Hair076_Uit
+FileName: HairAllLegacy076
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAllLegacy076/output/MiiHairAllLegacy076.fmdb }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAllLegacy076/output/MiiHairAllLegacyHat076.fmdb }
+PartsIndex: 76

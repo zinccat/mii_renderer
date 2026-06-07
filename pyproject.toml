@@ -1,0 +1,15 @@
+[project]
+name = "mii-face-renderer"
+version = "0.1.0"
+description = "Gradio Mii face builder for Tomodachi Life: Living the Dream assets."
+requires-python = ">=3.10"
+dependencies = [
+    "gradio==6.10.0",
+    "numpy>=1.24",
+    "pillow>=10.0",
+    "pyyaml>=6.0",
+    "trimesh>=4.0",
+]
+
+[tool.uv]
+package = false

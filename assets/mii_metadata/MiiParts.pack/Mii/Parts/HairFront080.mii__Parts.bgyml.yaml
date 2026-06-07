@@ -1,0 +1,15 @@
+BabyHairNameFatherFemale: FemaleCurly
+BabyHairNameFatherMale: MaleCurly
+BabyHairNameMotherFemale: FemaleCurly
+BabyHairNameMotherMale: MaleCurly
+Category: HairFront
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairFront080_Uit
+FileName: HairFront080
+IsFlippable: true
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairFront/MiiHairFront080/output/MiiHairFront080.fmdb }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairFront/MiiHairFront080/output/MiiHairFrontHat080.fmdb }
+PartsIndex: 80

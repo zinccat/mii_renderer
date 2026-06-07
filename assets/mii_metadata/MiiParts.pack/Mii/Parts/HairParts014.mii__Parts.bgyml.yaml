@@ -1,0 +1,25 @@
+Category: HairParts
+Components: {}
+ComponentsHash: {}
+FileName: HairParts014
+HairPartsModelUnit: !h32
+  227644938: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairParts014_LowerCenter.fmdb, PhivePhcl: "" }
+  508355709: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairParts014_MiddleLeft.fmdb, PhivePhcl: "" }
+  736404557: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairParts014_MiddleRight.fmdb, PhivePhcl: "" }
+  1043222786: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairParts014_LowerLeft.fmdb, PhivePhcl: "" }
+  1146093328: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairParts014_MiddleLeftRight.fmdb, PhivePhcl: "" }
+  1419430876: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairParts014_LowerRight.fmdb, PhivePhcl: "" }
+  1589120150: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairParts014_UpperLeft.fmdb, PhivePhcl: "" }
+  1888460914: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairParts014_UpperRight.fmdb, PhivePhcl: "" }
+  2401182501: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairParts014_UpperLeftRight.fmdb, PhivePhcl: "" }
+  2467664399: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairParts014_UpperCenter.fmdb, PhivePhcl: "" }
+  2781348323: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairParts014_MiddleCenter.fmdb, PhivePhcl: "" }
+  3018670763: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairParts014_LowerLeftRight.fmdb, PhivePhcl: "" }
+HairPartsModelUnitForHat: !h32
+  1671811856: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairPartsHat014_LowerLeft.fmdb, PhivePhcl: "" }
+  1855640887: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairPartsHat014_LowerCenter.fmdb, PhivePhcl: "" }
+  2394061562: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairPartsHat014_LowerRight.fmdb, PhivePhcl: "" }
+  2835486483: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts014/output/MiiHairPartsHat014_LowerLeftRight.fmdb, PhivePhcl: "" }
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+PartsIndex: 15

@@ -1,0 +1,31 @@
+BabyHairNameFatherFemale: FemaleFlat
+BabyHairNameFatherMale: MaleFlat
+BabyHairNameMotherFemale: FemaleFlat
+BabyHairNameMotherMale: MaleFlat
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairBack023_Uit
+FileName: HairBack023
+HairGender: !u 0x3b1f8b15
+HairPartsAttachInfo: 
+- { EditorUpperIconName: MiiEditor_Face_HairBack023Parts004_U_Uit, HairPartsName: HairParts004, IsAttachableMiddle: false, IsAttachableUpper: true }
+- { EditorMiddleIconName: MiiEditor_Face_HairBack023Parts013_C_Uit, HairPartsName: HairParts013, IsAttachableMiddle: true }
+HairPartsModelUnit: !h32
+  508355709: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack023_MiddleLeft/output/MiiHairBack023_MiddleLeft.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairBack023.phcl }
+  736404557: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack023_MiddleRight/output/MiiHairBack023_MiddleRight.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairBack023.phcl }
+  1146093328: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack023_MiddleLeftRight/output/MiiHairBack023_MiddleLeftRight.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairBack023.phcl }
+  1589120150: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack023_UpperLeft/output/MiiHairBack023_UpperLeft.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairBack023.phcl }
+  1888460914: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack023_UpperRight/output/MiiHairBack023_UpperRight.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairBack023.phcl }
+  2401182501: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack023_UpperLeftRight/output/MiiHairBack023_UpperLeftRight.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairBack023.phcl }
+  2467664399: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack023_UpperCenter/output/MiiHairBack023_UpperCenter.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairBack023_UpperLeft.phcl }
+  2781348323: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack023_MiddleCenter/output/MiiHairBack023_MiddleCenter.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairBack023.phcl }
+IsAttachableHairFront: true
+IsAttachableHairPartsMiddle: true
+IsAttachableHairPartsUpper: true
+IsSelectableSubColor: true
+IsUseHairPartsModel: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack023/output/MiiHairBack023.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairBack023.phcl }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack023/output/MiiHairBackHat023.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairBack023.phcl }
+PartsIndex: 285

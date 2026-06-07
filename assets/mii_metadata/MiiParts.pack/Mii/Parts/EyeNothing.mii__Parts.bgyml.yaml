@@ -1,0 +1,7 @@
+AxisForExpression: { X: 0.4, Y: 0.0 }
+Category: Eye
+Components: { EyeAccessoryRef: Work/Mii/EyeAccessoryParam/EyeNothing.mii__EyeAccessoryParam.gyml }
+ComponentsHash: { EyeAccessoryRef: !u 0xea4b1250 }
+FileName: EyeNothing
+IsVisibleInEditor: true
+PartsIndex: 60

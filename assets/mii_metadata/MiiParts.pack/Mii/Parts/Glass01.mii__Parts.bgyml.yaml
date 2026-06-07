@@ -1,0 +1,7 @@
+Category: Glass
+EditorIconName: MiiEditor_Face_GlassNothing_Uit
+EditorMaskIconName: MiiEditor_Face_Glass01color_Uit
+FileName: Glass01
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiGlass/MiiGlass01/output/MiiGlass01.fmdb }
+PartsIndex: 2

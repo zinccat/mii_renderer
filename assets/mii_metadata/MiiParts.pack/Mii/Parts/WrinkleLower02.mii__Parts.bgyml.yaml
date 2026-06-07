@@ -1,0 +1,13 @@
+Category: WrinkleLower
+DefaultAspect: 2
+DefaultScale: 6
+DefaultTransX: 4
+DefaultTransY: 20
+EditorIconName: MiiEditor_Face_WrinkleLower02_Uit
+FileName: WrinkleLower02
+IsVisibleInEditor: true
+MaxTransX: 8
+MaxTransY: 25
+MinTransY: 8
+PartsIndex: 3
+TextureName: WrinkleLower02

@@ -1,0 +1,4 @@
+Category: HairFront
+FileName: HairFrontMannequin03
+ModelUnit: { Fmdb: Work/Model/Body/Mannequin/MannequinHair/output/MannequinHairFront026.fmdb }
+ModelUnitForHat: { Fmdb: Work/Model/Body/Mannequin/MannequinHair/output/MannequinHairFrontHat026.fmdb }

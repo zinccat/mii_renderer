@@ -1,0 +1,17 @@
+BabyHairNameFatherFemale: FemaleTwinUpper
+BabyHairNameFatherMale: MaleTwinMiddle
+BabyHairNameMotherFemale: FemaleTwinUpper
+BabyHairNameMotherMale: MalePerppy
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_Hair046_Uit
+FileName: HairAllLegacy046
+FlippedModelUnit: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAllLegacy046/output/MiiHairAllLegacy046_Flip.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairAllLegacy046_Flip.phcl }
+HairGender: !u 0x3b1f8b15
+IsFlippable: true
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAllLegacy046/output/MiiHairAllLegacy046.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairAllLegacy046.phcl }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAllLegacy046/output/MiiHairAllLegacyHat046.fmdb }
+PartsIndex: 46

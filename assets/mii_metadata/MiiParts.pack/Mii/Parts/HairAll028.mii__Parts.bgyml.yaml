@@ -1,0 +1,18 @@
+BabyHairNameFatherFemale: FemaleBob
+BabyHairNameFatherMale: MaleBob
+BabyHairNameMotherFemale: FemaleBob
+BabyHairNameMotherMale: MaleBob
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairAll028_Uit
+FileName: HairAll028
+FlippedModelUnit: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll028/output/MiiHairAll028_Flip.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairAll028_Flip.phcl }
+FlippedModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll028/output/MiiHairAllHat028_Flip.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairAll028_Flip.phcl }
+HairGender: !u 0x3b1f8b15
+IsFlippable: true
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll028/output/MiiHairAll028.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairAll028.phcl }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll028/output/MiiHairAllHat028.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairAll028.phcl }
+PartsIndex: 165

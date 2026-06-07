@@ -1,0 +1,30 @@
+BaseVolume: 1.122
+EnablePrecisePhraseDetect: false
+FormantMinMax: { X: -22.0, Y: 18.0 }
+Habit_VoiceLoud_SpeakerBusSend: 1.2
+Habit_VoiceLoud_Volume: 1.8
+Habit_VoiceSmall_SpeakerBusSend: 0.6
+Habit_VoiceSmall_Volume: 0.4
+IntonationParam: 
+- {}
+- BoolParam: [true]
+  F32Param: [3.0, 2.0]
+- BoolParam: [true]
+  F32Param: [3.0, 1.3]
+- F32Param: [0.7, 1.5]
+- F32Param: [-0.8, 1.7]
+- BoolParam: []
+  F32Param: [0.5, 4.0]
+PitchMinMax: { X: -35.0, Y: 20.0 }
+PitchScaleForPitchUpDown: 1.12246
+PitchSmoothnessDefault: 0.5
+PitchSmoothnessSing: 0.003
+SingRangeBendStartWeightPlus: 0.75
+SingRangePitchMax: !h32 { 375060617: 45, 1027255402: 30, 3598407871: 65, 3655598229: 16, 4130933521: 10 }
+SpeedMinMax: { X: 0.35, Y: 1.6 }
+SpeedMinMax_MiiLanguage: { X: 0.35, Y: 0.975 }
+TensionMinMax: { X: 1.0, Y: 5.0 }
+TensionPichBendSec: 1.0
+Whisper_LpcOrder: 16
+Whisper_VolumeDry: 0.15
+Whisper_VolumeWhisper: 1.9

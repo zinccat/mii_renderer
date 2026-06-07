@@ -1,0 +1,14 @@
+BabyHairNameFatherFemale: FemaleCurly
+BabyHairNameFatherMale: MaleCurly
+BabyHairNameMotherFemale: FemaleCurly
+BabyHairNameMotherMale: MaleCurly
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairAll001_Uit
+FileName: HairAll001
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll001/output/MiiHairAll001.fmdb }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll001/output/MiiHairAllHat001.fmdb }
+PartsIndex: 180

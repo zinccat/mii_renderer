@@ -1,0 +1,10 @@
+ExpressionLessUseType: !u 0x361c00ea
+EyePartsLName: ""
+EyePartsRName: ""
+IsEnableBlink: true
+IsEnableLipSync: true
+IsReplaceLipSyncMouthLocation: true
+LipSyncMouthLocationName: ""
+LipSyncMouthPartsName: ""
+MouthLocationName: MouthSing
+MouthPartsName: Mouth038

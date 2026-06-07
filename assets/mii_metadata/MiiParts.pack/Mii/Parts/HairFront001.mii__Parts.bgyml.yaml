@@ -1,0 +1,15 @@
+BabyHairNameFatherFemale: FemaleBob
+BabyHairNameFatherMale: MaleBob
+BabyHairNameMotherFemale: FemaleBob
+BabyHairNameMotherMale: MaleBob
+Category: HairFront
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairFront001_Uit
+FileName: HairFront001
+HairGender: !u 0x3b1f8b15
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairFront/MiiHairFront001/output/MiiHairFront001.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairFront001.phcl }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairFront/MiiHairFront001/output/MiiHairFrontHat001.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairFront001.phcl }
+PartsIndex: 1

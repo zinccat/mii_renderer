@@ -1,0 +1,26 @@
+BabyHairNameFatherFemale: FemaleWave
+BabyHairNameFatherMale: MaleWave
+BabyHairNameMotherFemale: FemaleWave
+BabyHairNameMotherMale: MaleWave
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairBack021_Uit
+FileName: HairBack021
+HairGender: !u 0x3b1f8b15
+HairPartsAttachInfo: 
+- { EditorMiddleIconName: MiiEditor_Face_HairBack021Parts015_C_Uit, HairPartsName: HairParts015, IsAttachableMiddle: true }
+HairPartsModelUnit: !h32
+  508355709: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack021_MiddleLeft/output/MiiHairBack021_MiddleLeft.fmdb }
+  736404557: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack021_MiddleRight/output/MiiHairBack021_MiddleRight.fmdb }
+  1146093328: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack021_MiddleLeftRight/output/MiiHairBack021_MiddleLeftRight.fmdb }
+  2781348323: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack021_MiddleCenter/output/MiiHairBack021_MiddleCenter.fmdb }
+IsAttachableHairFront: true
+IsAttachableHairPartsMiddle: true
+IsAttachableHairPartsUpper: true
+IsSelectableSubColor: true
+IsUseHairPartsModel: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack021/output/MiiHairBack021.fmdb }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack021/output/MiiHairBackHat021.fmdb }
+PartsIndex: 283

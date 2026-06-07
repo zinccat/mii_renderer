@@ -1,0 +1,9 @@
+ExpressionLessUseType: !u 0x390b012d
+EyeLocationName: ""
+EyePartsLName: ""
+EyePartsRName: ""
+EyebrowLocationName: EyebrowAffected
+IsEnableBlink: true
+IsEnableLipSync: true
+LipSyncMouthPartsName: Mouth036
+MouthPartsName: Mouth015

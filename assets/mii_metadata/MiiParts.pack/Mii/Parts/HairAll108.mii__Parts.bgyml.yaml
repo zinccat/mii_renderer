@@ -1,0 +1,15 @@
+BabyHairNameFatherFemale: ThirdAfro
+BabyHairNameFatherMale: ThirdAfro
+BabyHairNameMotherFemale: ThirdAfro
+BabyHairNameMotherMale: ThirdAfro
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairAll108_Uit
+FileName: HairAll108
+HairGender: !u 0x0ddcbe76
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll108/output/MiiHairAll108.fmdb }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll108/output/MiiHairAllHat108.fmdb }
+PartsIndex: 331

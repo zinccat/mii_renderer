@@ -1,0 +1,26 @@
+Category: HairParts
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairBack000Parts005_C_Uit
+FileName: HairParts005
+HairPartsModelUnit: !h32
+  227644938: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairParts005_LowerCenter.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairParts005_LowerCenter.phcl }
+  508355709: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairParts005_MiddleLeft.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairParts005_MiddleLeft.phcl }
+  736404557: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairParts005_MiddleRight.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairParts005_MiddleRight.phcl }
+  1043222786: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairParts005_LowerLeft.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairParts005_LowerLeft.phcl }
+  1146093328: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairParts005_MiddleLeftRight.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairParts005_MiddleLeftRight.phcl }
+  1419430876: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairParts005_LowerRight.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairParts005_LowerRight.phcl }
+  1589120150: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairParts005_UpperLeft.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairParts005_UpperLeft.phcl }
+  1888460914: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairParts005_UpperRight.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairParts005_UpperRight.phcl }
+  2401182501: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairParts005_UpperLeftRight.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairParts005_UpperLeftRight.phcl }
+  2467664399: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairParts005_UpperCenter.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairParts005_UpperCenter.phcl }
+  2781348323: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairParts005_MiddleCenter.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairParts005_MiddleCenter.phcl }
+  3018670763: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairParts005_LowerLeftRight.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairParts005_LowerLeftRight.phcl }
+HairPartsModelUnitForHat: !h32
+  1671811856: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairPartsHat005_LowerLeft.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairPartsHat005_LowerLeft.phcl }
+  1855640887: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairPartsHat005_LowerCenter.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairPartsHat005_LowerCenter.phcl }
+  2394061562: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairPartsHat005_LowerRight.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairPartsHat005_LowerRight.phcl }
+  2835486483: { Fmdb: Work/Model/Mii/MiiHairParts/MiiHairParts005/output/MiiHairPartsHat005_LowerLeftRight.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairPartsHat005_LowerLeftRight.phcl }
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+PartsIndex: 6

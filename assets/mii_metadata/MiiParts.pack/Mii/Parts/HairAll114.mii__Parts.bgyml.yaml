@@ -1,0 +1,15 @@
+BabyHairNameFatherFemale: FemaleNaughty
+BabyHairNameFatherMale: MaleNaughty
+BabyHairNameMotherFemale: FemaleNaughty
+BabyHairNameMotherMale: MaleNaughty
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairAll114_Uit
+FileName: HairAll114
+HairGender: !u 0x0ddcbe76
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll114/output/MiiHairAll114.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairAll114.phcl }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll114/output/MiiHairAllHat114.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairAll114.phcl }
+PartsIndex: 340

@@ -1,0 +1,15 @@
+BabyHairNameFatherFemale: FemaleNaughty
+BabyHairNameFatherMale: ThirdPunk
+BabyHairNameMotherFemale: ThirdPunk
+BabyHairNameMotherMale: ThirdPunk
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairAll046_Uit
+FileName: HairAll046
+HairGender: !u 0x0ddcbe76
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll046/output/MiiHairAll046.fmdb }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll046/output/MiiHairAllHat046.fmdb }
+PartsIndex: 225

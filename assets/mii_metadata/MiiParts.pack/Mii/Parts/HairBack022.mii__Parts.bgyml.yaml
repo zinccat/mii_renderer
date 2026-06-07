@@ -1,0 +1,16 @@
+BabyHairNameFatherFemale: FemaleCenterLower
+BabyHairNameFatherMale: MaleCenterLower
+BabyHairNameMotherFemale: FemaleCenterLower
+BabyHairNameMotherMale: MaleBob
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairBack022_Uit
+FileName: HairBack022
+HairGender: !u 0x3b1f8b15
+IsAttachableHairFront: true
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack022/output/MiiHairBack022.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairBack022.phcl }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack022/output/MiiHairBackHat022.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairBack022.phcl }
+PartsIndex: 284

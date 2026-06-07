@@ -1,0 +1,10 @@
+BabyHairNameFatherFemale: FemaleSkin
+BabyHairNameFatherMale: MaleSkin
+BabyHairNameMotherFemale: FemaleSkin
+BabyHairNameMotherMale: MaleSkin
+Category: Hair
+EditorIconName: MiiEditor_Face_Hair030_Uit
+FileName: HairNothing
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairNothing/output/MiiHairNothing.fmdb }
+PartsIndex: 30

@@ -1,0 +1,15 @@
+BabyHairNameFatherFemale: FemaleSkin
+BabyHairNameFatherMale: MaleSkin
+BabyHairNameMotherFemale: FemaleSkin
+BabyHairNameMotherMale: MaleSkin
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairAll060_Uit
+FileName: HairAll060
+IsFlippable: false
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll060/output/MiiHairAll060.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairAll060.phcl }
+ModelUnitForHat: { Fmdb: "", PhivePhcl: "" }
+PartsIndex: 239

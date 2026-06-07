@@ -1,0 +1,16 @@
+BabyHairNameFatherFemale: FemaleTwinLower
+BabyHairNameFatherMale: MaleTwinLower
+BabyHairNameMotherFemale: FemaleTwinLower
+BabyHairNameMotherMale: MalePerppy
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairBack030_Uit
+FileName: HairBack030
+HairGender: !u 0x3b1f8b15
+IsAttachableHairFront: true
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack030/output/MiiHairBack030.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairBack030.phcl }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack030/output/MiiHairBackHat030.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairBack030.phcl }
+PartsIndex: 292

@@ -1,0 +1,32 @@
+BabyHairNameFatherFemale: FemaleBob
+BabyHairNameFatherMale: MaleBob
+BabyHairNameMotherFemale: FemaleBob
+BabyHairNameMotherMale: MaleBob
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairBack018_Uit
+FileName: HairBack018
+HairPartsAttachInfo: 
+- { EditorUpperIconName: MiiEditor_Face_HairBack018Parts005_U_Uit, HairPartsName: HairParts005, IsAttachableUpper: true }
+HairPartsModelUnit: !h32
+  227644938: { Fmdb: "", PhivePhcl: "" }
+  508355709: { Fmdb: "", PhivePhcl: "" }
+  736404557: { Fmdb: "", PhivePhcl: "" }
+  1043222786: { Fmdb: "", PhivePhcl: "" }
+  1146093328: { Fmdb: "", PhivePhcl: "" }
+  1419430876: { Fmdb: "", PhivePhcl: "" }
+  1589120150: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack018_UpperLeft/output/MiiHairBack018_UpperLeft.fmdb, PhivePhcl: "" }
+  1888460914: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack018_UpperRight/output/MiiHairBack018_UpperRight.fmdb, PhivePhcl: "" }
+  2401182501: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack018_UpperLeftRight/output/MiiHairBack018_UpperLeftRight.fmdb, PhivePhcl: "" }
+  2467664399: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack018_UpperCenter/output/MiiHairBack018_UpperCenter.fmdb, PhivePhcl: "" }
+  2781348323: { Fmdb: "", PhivePhcl: "" }
+  3018670763: { Fmdb: "", PhivePhcl: "" }
+IsAttachableHairFront: true
+IsAttachableHairPartsUpper: true
+IsSelectableSubColor: true
+IsUseHairPartsModel: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack018/output/MiiHairBack018.fmdb, PhivePhcl: "" }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack018/output/MiiHairBackHat018.fmdb, PhivePhcl: "" }
+PartsIndex: 253

@@ -1,0 +1,10 @@
+AxisForExpression: { X: 0.38, Y: -0.06 }
+Category: Eye
+Components: { EyeAccessoryRef: Work/Mii/EyeAccessoryParam/Eye054.mii__EyeAccessoryParam.gyml }
+ComponentsHash: { EyeAccessoryRef: !u 0x31bb5bee }
+EditorIconName: MiiEditor_Face_Eye054_Uit
+EditorMaskIconName: MiiEditor_Face_Eye054color_Uit
+FileName: Eye054
+IsVisibleInEditor: true
+PartsIndex: 54
+TextureName: Eye054

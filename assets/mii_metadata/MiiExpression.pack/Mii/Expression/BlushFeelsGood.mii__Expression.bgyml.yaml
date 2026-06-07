@@ -1,0 +1,13 @@
+ExpressionLessUseType: !u 0x390b012d
+EyeLocationName: ""
+EyePartsLName: Eye026
+EyePartsRName: Eye026
+EyebrowLocationName: EyebrowIffy
+IsEnableBlink: false
+IsEnableLipSync: true
+IsNoChangeEyeOnCool: false
+IsNoChangeEyeOnDry: false
+IsNoChangeEyeOnNagomi: false
+LipSyncMouthPartsName: ""
+MouthLocationName: MouthFeelsGood
+MouthPartsName: Mouth026

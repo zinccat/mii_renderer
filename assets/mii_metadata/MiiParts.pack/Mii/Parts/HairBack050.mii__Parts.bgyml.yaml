@@ -1,0 +1,15 @@
+BabyHairNameFatherFemale: ThirdAfro
+BabyHairNameFatherMale: ThirdAfro
+BabyHairNameMotherFemale: ThirdAfro
+BabyHairNameMotherMale: ThirdAfro
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairBack050_Uit
+FileName: HairBack050
+IsAttachableHairFront: true
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack050/output/MiiHairBack050.fmdb }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack050/output/MiiHairBackHat050.fmdb }
+PartsIndex: 322

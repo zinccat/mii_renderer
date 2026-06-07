@@ -1,0 +1,15 @@
+BabyHairNameFatherFemale: FemaleDread
+BabyHairNameFatherMale: MaleDread
+BabyHairNameMotherFemale: FemaleDread
+BabyHairNameMotherMale: MaleDread
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairAll106_Uit
+FileName: HairAll106
+HairGender: !u 0x0ddcbe76
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll106/output/MiiHairAll106.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairAll106.phcl }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAll106/output/MiiHairAllHat106.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairAllHat106.phcl }
+PartsIndex: 329

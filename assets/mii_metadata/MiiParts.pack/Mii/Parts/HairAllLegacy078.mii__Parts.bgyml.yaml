@@ -1,0 +1,17 @@
+BabyHairNameFatherFemale: FemaleTwinMiddle
+BabyHairNameFatherMale: MaleTwinMiddle
+BabyHairNameMotherFemale: FemaleTwinMiddle
+BabyHairNameMotherMale: MaleFlat
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_Hair078_Uit
+FileName: HairAllLegacy078
+FlippedModelUnit: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAllLegacy078/output/MiiHairAllLegacy078_Flip.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairAllLegacy078_Flip.phcl }
+HairGender: !u 0x3b1f8b15
+IsFlippable: true
+IsSelectableSubColor: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAllLegacy078/output/MiiHairAllLegacy078.fmdb, PhivePhcl: Work/Phive/Cloth/MiiHairAllLegacy078.phcl }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairAll/MiiHairAllLegacy078/output/MiiHairAllLegacyHat078.fmdb }
+PartsIndex: 78

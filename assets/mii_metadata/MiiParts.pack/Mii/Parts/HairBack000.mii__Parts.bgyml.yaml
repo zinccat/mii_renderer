@@ -1,0 +1,63 @@
+BabyHairNameFatherFemale: FemalePerppy
+BabyHairNameFatherMale: MalePerppy
+BabyHairNameMotherFemale: FemalePerppy
+BabyHairNameMotherMale: MalePerppy
+Category: Hair
+Components: {}
+ComponentsHash: {}
+EditorIconName: MiiEditor_Face_HairBack000_Uit
+FileName: HairBack000
+HairPartsAttachInfo: 
+- { EditorMiddleIconName: MiiEditor_Face_HairBack000Parts000_C_Uit, EditorUpperIconName: MiiEditor_Face_HairBack000Parts000_U_Uit, HairPartsName: HairParts000, IsAttachableMiddle: true, IsAttachableUpper: true }
+- { EditorUpperIconName: MiiEditor_Face_HairBack000Parts001_U_Uit, HairPartsName: HairParts001, IsAttachableUpper: true }
+- { EditorUpperIconName: MiiEditor_Face_HairBack000Parts002_U_Uit, HairPartsName: HairParts002, IsAttachableUpper: true }
+- { EditorLowerIconName: MiiEditor_Face_HairBack000Parts003_D_Uit, EditorMiddleIconName: MiiEditor_Face_HairBack000Parts003_C_Uit, EditorUpperIconName: MiiEditor_Face_HairBack000Parts003_U_Uit, HairPartsName: HairParts003, IsAttachableLower: true, IsAttachableMiddle: true, IsAttachableUpper: true }
+- { EditorLowerIconName: MiiEditor_Face_HairBack000Parts004_D_Uit, EditorMiddleIconName: MiiEditor_Face_HairBack000Parts004_C_Uit, EditorUpperIconName: MiiEditor_Face_HairBack000Parts004_U_Uit, HairPartsName: HairParts004, IsAttachableLower: true, IsAttachableMiddle: true, IsAttachableUpper: true }
+- { EditorLowerIconName: MiiEditor_Face_HairBack000Parts005_D_Uit, EditorMiddleIconName: MiiEditor_Face_HairBack000Parts005_C_Uit, EditorUpperIconName: MiiEditor_Face_HairBack000Parts005_U_Uit, HairPartsName: HairParts005, IsAttachableLower: true, IsAttachableMiddle: true, IsAttachableUpper: true }
+- { EditorUpperIconName: MiiEditor_Face_HairBack000Parts006_U_Uit, HairPartsName: HairParts006, IsAttachableUpper: true }
+- { EditorMiddleIconName: MiiEditor_Face_HairBack000Parts007_C_Uit, HairPartsName: HairParts007, IsAttachableMiddle: true }
+- { EditorUpperIconName: MiiEditor_Face_HairBack000Parts008_U_Uit, HairPartsName: HairParts008, IsAttachableUpper: true }
+- { EditorUpperIconName: MiiEditor_Face_HairBack000Parts009_U_Uit, HairPartsName: HairParts009, IsAttachableUpper: true }
+- { EditorUpperIconName: MiiEditor_Face_HairBack000Parts010_U_Uit, HairPartsName: HairParts010, IsAttachableUpper: true }
+- { EditorUpperIconName: MiiEditor_Face_HairBack000Parts011_U_Uit, HairPartsName: HairParts011, IsAttachableUpper: true }
+- { EditorUpperIconName: MiiEditor_Face_HairBack000Parts012_U_Uit, HairPartsName: HairParts012, IsAttachableUpper: true }
+- { EditorMiddleIconName: MiiEditor_Face_HairBack000Parts013_C_Uit, EditorUpperIconName: MiiEditor_Face_HairBack000Parts013_U_Uit, HairPartsName: HairParts013, IsAttachableMiddle: true, IsAttachableUpper: true }
+- { EditorLowerIconName: MiiEditor_Face_HairBack000Parts014_D_Uit, EditorMiddleIconName: MiiEditor_Face_HairBack000Parts014_C_Uit, EditorUpperIconName: MiiEditor_Face_HairBack000Parts014_U_Uit, HairPartsName: HairParts014, IsAttachableLower: true, IsAttachableMiddle: true, IsAttachableUpper: true }
+- { EditorLowerIconName: MiiEditor_Face_HairBack000Parts015_D_Uit, EditorMiddleIconName: MiiEditor_Face_HairBack000Parts015_C_Uit, EditorUpperIconName: MiiEditor_Face_HairBack000Parts015_U_Uit, HairPartsName: HairParts015, IsAttachableLower: true, IsAttachableMiddle: true, IsAttachableUpper: true }
+- { EditorMiddleIconName: MiiEditor_Face_HairBack000Parts016_C_Uit, EditorUpperIconName: MiiEditor_Face_HairBack000Parts016_U_Uit, HairPartsName: HairParts016, IsAttachableMiddle: true, IsAttachableUpper: true }
+- { EditorLowerIconName: MiiEditor_Face_HairBack000Parts017_D_Uit, EditorUpperIconName: MiiEditor_Face_HairBack000Parts017_U_Uit, HairPartsName: HairParts017, IsAttachableLower: true, IsAttachableUpper: true }
+- { EditorMiddleIconName: MiiEditor_Face_HairBack000Parts018_U_Uit, HairPartsName: HairParts018, IsAttachableMiddle: true }
+- { EditorMiddleIconName: MiiEditor_Face_HairBack000Parts019_C_Uit, HairPartsName: HairParts019, IsAttachableMiddle: true }
+- { EditorMiddleIconName: MiiEditor_Face_HairBack000Parts020_C_Uit, EditorUpperIconName: MiiEditor_Face_HairBack000Parts020_U_Uit, HairPartsName: HairParts020, IsAttachableMiddle: true, IsAttachableUpper: true }
+- { EditorMiddleIconName: MiiEditor_Face_HairBack000Parts021_C_Uit, EditorUpperIconName: MiiEditor_Face_HairBack000Parts021_U_Uit, HairPartsName: HairParts021, IsAttachableMiddle: true, IsAttachableUpper: true }
+- { EditorLowerIconName: MiiEditor_Face_HairBack000Parts022_D_Uit, EditorMiddleIconName: MiiEditor_Face_HairBack000Parts022_C_Uit, EditorUpperIconName: MiiEditor_Face_HairBack000Parts022_U_Uit, HairPartsName: HairParts022, IsAttachableLower: true, IsAttachableMiddle: true, IsAttachableUpper: true }
+- { EditorUpperIconName: MiiEditor_Face_HairBack000Parts023_U_Uit, HairPartsName: HairParts023, IsAttachableUpper: true }
+- { EditorUpperIconName: MiiEditor_Face_HairBack000Parts024_U_Uit, HairPartsName: HairParts024, IsAttachableUpper: true }
+HairPartsModelUnit: !h32
+  227644938: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_LowerCenter/output/MiiHairBack000_LowerCenter.fmdb }
+  508355709: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_MiddleLeft/output/MiiHairBack000_MiddleLeft.fmdb }
+  736404557: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_MiddleRight/output/MiiHairBack000_MiddleRight.fmdb }
+  1043222786: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_LowerLeft/output/MiiHairBack000_LowerLeft.fmdb }
+  1146093328: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_MiddleLeftRight/output/MiiHairBack000_MiddleLeftRight.fmdb }
+  1419430876: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_LowerRight/output/MiiHairBack000_LowerRight.fmdb }
+  1589120150: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_UpperLeft/output/MiiHairBack000_UpperLeft.fmdb }
+  1888460914: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_UpperRight/output/MiiHairBack000_UpperRight.fmdb }
+  2401182501: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_UpperLeftRight/output/MiiHairBack000_UpperLeftRight.fmdb }
+  2467664399: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_UpperCenter/output/MiiHairBack000_UpperCenter.fmdb }
+  2781348323: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_MiddleCenter/output/MiiHairBack000_MiddleCenter.fmdb }
+  3018670763: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_LowerLeftRight/output/MiiHairBack000_LowerLeftRight.fmdb }
+HairPartsModelUnitForHat: !h32
+  1671811856: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_LowerLeft/output/MiiHairBackHat000_LowerLeft.fmdb }
+  1855640887: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_LowerCenter/output/MiiHairBackHat000_LowerCenter.fmdb }
+  2394061562: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_LowerRight/output/MiiHairBackHat000_LowerRight.fmdb }
+  2835486483: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000_LowerLeftRight/output/MiiHairBackHat000_LowerLeftRight.fmdb }
+IsAttachableHairFront: true
+IsAttachableHairPartsLower: true
+IsAttachableHairPartsMiddle: true
+IsAttachableHairPartsUpper: true
+IsSelectableSubColor: true
+IsUseHairPartsModel: true
+IsVisibleInEditor: true
+ModelUnit: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000/output/MiiHairBack000.fmdb }
+ModelUnitForHat: { Fmdb: Work/Model/Mii/MiiHairBack/MiiHairBack000/output/MiiHairBackHat000.fmdb }
+PartsIndex: 206

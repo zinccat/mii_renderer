@@ -1,0 +1,13 @@
+Category: MakeLower
+DefaultAspect: 4
+DefaultScale: 5
+DefaultTransX: 6
+DefaultTransY: 21
+EditorIconName: MiiEditor_Face_MakeLower05_Uit
+FileName: MakeLower05
+IsVisibleInEditor: true
+MaxTransX: 7
+MaxTransY: 25
+MinTransY: 5
+PartsIndex: 8
+TextureName: MakeLower05

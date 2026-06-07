@@ -1,0 +1,6 @@
+Category: Hair
+FileName: HairBackMannequin000
+IsAttachableHairFront: true
+IsSelectableColor: false
+ModelUnit: { Fmdb: Work/Model/Body/Mannequin/MannequinHair/output/MannequinHairBack000.fmdb }
+ModelUnitForHat: { Fmdb: Work/Model/Body/Mannequin/MannequinHair/output/MannequinHairBackHat000.fmdb }

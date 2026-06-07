@@ -1,0 +1,7 @@
+AxisForExpression: { X: 0.36, Y: 0.0 }
+Category: Eye
+Components: { EyeAccessoryRef: Work/Mii/EyeAccessoryParam/Eye063.mii__EyeAccessoryParam.gyml }
+ComponentsHash: { EyeAccessoryRef: !u 0x4eeacbc8 }
+FileName: Eye063
+PartsIndex: -1
+TextureName: Eye063

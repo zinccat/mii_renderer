@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mii Toon Viewer</title>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #F5E9C8; }
+  #c { width: 100%; height: 100%; display: block; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+// ── Bgyml-derived constants (Mii editor preview + toon params) ───────────
+// Source: Parameter/GfxSnapshotSetting/EditorMiiPreview.gfx__SnapshotSetting
+//         Parameter/GfxToon/System.gfx__ToonParam
+//         Parameter/GfxDynamicLightToon/Island.gfx__DynamicLightToonParam
+
+// Camera (editor preview)
+//
+// bgyml CameraAt (0, 0.97, 0) / CameraPos (0, 0.96, 9.4) assumes a full
+// standing-Mii model where the head sits ~Y=0.97. Our GLB is JUST the
+// head — vertex Y range 0.007..0.67 — so the bgyml target ends up
+// floating above the head. Shift to the head's actual center and pull
+// the camera in proportionally so the face fills the frame the way the
+// editor preview does.
+const CAM_FOV       = 15.0;             // ProjFovy (telephoto)
+const CAM_POS       = [0.0, 0.35, 4.5]; // closer to face
+const CAM_TARGET    = [0.0, 0.35, 0.0]; // mid-head height
+const CAM_FAR       = 100.0;
+
+// Directional light (editor preview)
+// NOTE: bgyml LightIntensity 2.5 is normalized DIFFERENTLY in the engine's
+// toon pipeline (it gets divided by an exposure / pre-mult somewhere).
+// Naively multiplying 2.5 × DiffuseIntensity 2.7 × MainLightIntensity 0.75
+// blows out white. Treat LIGHT_INTEN as the user-facing exposure knob and
+// keep it at 1.0 — same trick the model-viewer code used.
+const LIGHT_COLOR   = [1.0, 1.0, 1.0]; // pure white
+const LIGHT_INTEN   = 1.0;              // exposure (don't compound bgyml 2.5)
+const LIGHT_LAT_DEG = 40.0;             // above horizon
+const LIGHT_LON_DEG = -20.0;            // azimuth (negative = right of camera)
+
+// Toon shader params (System.gfx__ToonParam).
+//
+// The engine's full equation is roughly:
+//   pixel = albedo × diffuseAmount × DiffuseIntensity × MainLightIntensity × LightIntensity
+//                 × LightColor + tone-mapped highlights
+// For LDR (no tone mapping), we collapse all the multipliers to 1.0 so the
+// engine's intent — albedo × (0.75 in shadow .. 1.0 in light) — lands at
+// exactly the picked color in the lit areas. The bgyml's 2.7 / 0.75 / 2.5
+// constants assume the engine's HDR exposure pre-mult that we don't have.
+const SHADE_START_BODY = 85.0;
+const SHADE_START_FACE = 100.0;
+const SHADE_SLOPE      = 0.05;   // ShadeSlopeRange — hard cel transition
+const SHADE_INTENSITY  = 0.75;   // shadow side stays at 75% (DiffuseShadeStartIntensity)
+const DIFFUSE_INTEN    = 1.0;    // collapsed; lit area = exactly albedo
+const MAIN_LIGHT_INTEN = 1.0;    // collapsed; engine attenuator absorbed into above
+
+// Specular — bgyml has 3 separate specular branches:
+//   SpecularParam       — general (NOT for skin in the engine; the skin
+//                         shader path doesn't enable it)
+//   SpecularMetalParam  — metallic surfaces (glass frame, accessories)
+//   SpecularAnisoParam  — anisotropic, hair-only
+// Skin / face / mask = matte. Hair = unlit (texture-baked). Therefore
+// specular should be off everywhere in our composite — there's no
+// metallic-or-aniso mesh in the Mii face GLB. Keep the constants for
+// reference; per-mesh disable below sets SPEC_INTEN→0 for face.
+const SPEC_INTEN       = 0.0;    // disabled (was 1.5) — skin is matte
+const SPEC_LUMA_THRESH = 0.2;    // SpecularLumaThreshold
+const SPEC_ALBEDO_RATE = 0.4;    // SpecularAlbedoRate
+const SPEC_INTEN_MIN   = 0.0;    // bgyml=0.25 — adds constant gloss; we omit
+const SPEC_THRESH_MIN  = 0.0;    // SpecularParam.ThresholdMin
+const SPEC_THRESH_MAX  = 0.53;   // SpecularParam.ThresholdMax
+const SPEC_THRESH_POW  = 14.3;   // SpecularParam.ThresholdPow
+
+// Rim / back-edge light — also off by default. The engine's rim is for
+// gameplay scenes with HDR backlights; in the editor preview it's
+// barely visible. With LDR + my toon attenuation, even a small rim adds
+// a halo that reads as "metallic gloss" rather than "atmospheric edge".
+const RIM_INTEN        = 0.0;    // bgyml=5.0 — disabled
+const RIM_VIEW_ANGLE   = 71.5;   // BackEdgeLightViewAngle
+const RIM_EDGE_DEPTH   = 0.2;    // RimLightEdgeDepth
+const RIM_RATE_Y       = 0.4;    // RimLightRateY (vertical bias)
+
+// Post-processing — Bloom thresholds in bgyml are HDR-luminance values
+// (BloomClampedLuminance 1.5 = "anything above 1.5 nits becomes bloom").
+// In LDR all our colors stay ≤1, so the threshold has to be lowered to
+// kick in at all. Intensity must stay low — UnrealBloomPass renders to
+// a separate target and adds it back, so even modest values (>0.3) blow
+// out highlights once the toon specular kicks in.
+const BLOOM_INTENSITY  = 0.15;   // bgyml=0.7 (HDR); 0.15 is visible without
+                                 //   washing out skin
+const BLOOM_THRESHOLD  = 0.95;   // only the brightest specular peaks bloom
+const BLOOM_RADIUS     = 0.3;    // UnrealBloomPass radius units
+
+// ── Toon shader material factory ─────────────────────────────────────────
+function makeToonMaterial(params) {
+    // params:
+    //   isFace: bool  → use 100° vs 85°
+    //   isHair: bool  → use anisotropic specular
+    //   baseTexture: THREE.Texture | null
+    //   baseColor: [r,g,b]
+    //   alpha: 0..1
+    //   doubleSided: bool
+
+    const shadeStart = params.isFace ? SHADE_START_FACE : SHADE_START_BODY;
+    const shadeBoundary = Math.cos(shadeStart * Math.PI / 180.0);
+
+    const uniforms = {
+        uLightDir:       { value: new THREE.Vector3() },
+        uLightColor:     { value: new THREE.Color(...LIGHT_COLOR) },
+        uLightIntensity: { value: LIGHT_INTEN },
+        uShadeBoundary:  { value: shadeBoundary },
+        uShadeSlope:     { value: SHADE_SLOPE },
+        uShadeIntensity: { value: SHADE_INTENSITY },
+        uDiffuseInten:   { value: DIFFUSE_INTEN },
+        uMainLightInten: { value: MAIN_LIGHT_INTEN },
+        uSpecInten:      { value: SPEC_INTEN },
+        uSpecLumaThresh: { value: SPEC_LUMA_THRESH },
+        uSpecAlbedoRate: { value: SPEC_ALBEDO_RATE },
+        uSpecIntenMin:   { value: SPEC_INTEN_MIN },
+        uSpecThreshMin:  { value: SPEC_THRESH_MIN },
+        uSpecThreshMax:  { value: SPEC_THRESH_MAX },
+        uSpecThreshPow:  { value: SPEC_THRESH_POW },
+        uRimInten:       { value: RIM_INTEN },
+        uRimViewAngle:   { value: RIM_VIEW_ANGLE },
+        uRimEdgeDepth:   { value: RIM_EDGE_DEPTH },
+        uRimRateY:       { value: RIM_RATE_Y },
+        uBaseColor:      { value: new THREE.Color(...params.baseColor) },
+        uHasTexture:     { value: params.baseTexture ? 1 : 0 },
+        uTexture:        { value: params.baseTexture },
+        uOpacity:        { value: params.alpha ?? 1.0 },
+        uIsHair:         { value: params.isHair ? 1 : 0 },
+        uUnlit:          { value: params.unlit ? 1 : 0 },
+    };
+
+    const vertexShader = /* glsl */ `
+        varying vec3 vWorldNormal;
+        varying vec3 vWorldPos;
+        varying vec2 vUv;
+        void main() {
+            vec4 worldPos = modelMatrix * vec4(position, 1.0);
+            vWorldPos = worldPos.xyz;
+            vWorldNormal = normalize(mat3(modelMatrix) * normal);
+            vUv = uv;
+            gl_Position = projectionMatrix * viewMatrix * worldPos;
+        }`;
+
+    const fragmentShader = /* glsl */ `
+        precision highp float;
+        uniform vec3  uLightDir;          // direction TOWARD light
+        uniform vec3  uLightColor;
+        uniform float uLightIntensity;
+        uniform float uShadeBoundary;
+        uniform float uShadeSlope;
+        uniform float uShadeIntensity;
+        uniform float uDiffuseInten;
+        uniform float uMainLightInten;
+        uniform float uSpecInten;
+        uniform float uSpecLumaThresh;
+        uniform float uSpecAlbedoRate;
+        uniform float uSpecIntenMin;
+        uniform float uSpecThreshMin;
+        uniform float uSpecThreshMax;
+        uniform float uSpecThreshPow;
+        uniform float uRimInten;
+        uniform float uRimViewAngle;
+        uniform float uRimEdgeDepth;
+        uniform float uRimRateY;
+        uniform vec3  uBaseColor;
+        uniform int   uHasTexture;
+        uniform sampler2D uTexture;
+        uniform float uOpacity;
+        uniform int   uIsHair;
+        uniform int   uUnlit;
+
+        varying vec3 vWorldNormal;
+        varying vec3 vWorldPos;
+        varying vec2 vUv;
+
+        void main() {
+            vec3 N = normalize(vWorldNormal);
+            vec3 L = normalize(uLightDir);
+            vec3 V = normalize(cameraPosition - vWorldPos);
+
+            // Albedo: textured or base color
+            vec3 albedo = uBaseColor;
+            float alpha = uOpacity;
+            if (uHasTexture == 1) {
+                vec4 ts = texture2D(uTexture, vUv);
+                // For textures with alpha (face mask overlay), the RGB
+                // values in alpha=0 regions are usually black/garbage —
+                // sampling them and multiplying by uBaseColor would tint
+                // the geometry black. Use texture RGB only where alpha is
+                // meaningful; otherwise fall back to the material's base
+                // color. This matches glTF's spec for alphaMode=BLEND
+                // (premultiplied composite from below).
+                albedo = mix(uBaseColor, ts.rgb * uBaseColor, ts.a);
+                alpha *= ts.a;
+            }
+            // Discard fully-transparent fragments so they don't write to
+            // depth and occlude meshes behind (face Mask overlay sits in
+            // front of the Head — without discard, transparent Mask
+            // pixels hide the skin).
+            if (alpha < 0.01) discard;
+
+            // Unlit early-out for hair / 3D-beard meshes (KHR_materials_unlit
+            // in the source GLB). The strand texture already bakes in the
+            // hair color via the engine mii_hair_color0/color1 shader; toon
+            // diffuse + specular on top would attenuate the texture toward
+            // the shadow side, dimming hair to ~56-75% of its picked color.
+            // That dimming combined with a dark skin tone makes hair look
+            // like it's blending into the face. Just emit the texture color
+            // as-is for unlit meshes — same as model-viewer did.
+            if (uUnlit == 1) {
+                // Hair / 3D-beard path: the strand texture bakes in the
+                // hair color, but the engine still applies cel shading +
+                // an additive back-edge rim on top. With pure-black hair
+                // (albedo ≈ 0), MULTIPLICATIVE shading stays black no
+                // matter what — only additive terms (ambient floor + rim)
+                // keep the underside visible. Without this, dark hair
+                // reads as a solid pitch-black silhouette, very different
+                // from the game.
+                float NdotL = dot(N, L);
+                float NdotV = max(0.0, dot(N, V));
+
+                // Cel-shaded modulation (softer than skin: 0.8..1.0).
+                // Keeps shadow side at 80% of lit so the hair color stays
+                // consistent across the surface (matches the game's
+                // "uniform color with subtle shading" look).
+                float litFactor = smoothstep(-0.20, 0.20, NdotL);
+                float shadeAmount = mix(0.80, 1.0, litFactor);
+                vec3 shaded = albedo * shadeAmount;
+
+                // Additive ambient floor: lifts black hair just enough
+                // to be visible against a dark background. ~3% gray.
+                shaded += vec3(0.025);
+
+                // Back-edge rim (BackEdgeLightIntensity in bgyml): bright
+                // outline at silhouettes / on the side away from the
+                // light. The engine fires this at HDR brightness; in
+                // LDR a small additive bump per the rim mask is enough
+                // to make dark-hair edges visible without graying out
+                // the whole hair surface.
+                float rimAngleDeg = degrees(acos(clamp(NdotV, 0.0, 1.0)));
+                float rimMask = smoothstep(60.0, 80.0, rimAngleDeg);
+                rimMask *= clamp(1.0 - NdotL, 0.0, 1.0);
+                shaded += vec3(rimMask * 0.08);
+
+                // sRGB encode (piecewise — pow(0,y) is undefined).
+                vec3 c = max(shaded, vec3(0.0));
+                vec3 lo = c * 12.92;
+                vec3 hi = 1.055 * pow(max(c, vec3(0.0031308)), vec3(1.0/2.4)) - 0.055;
+                vec3 srgb = mix(hi, lo, lessThanEqual(c, vec3(0.0031308)));
+                gl_FragColor = vec4(srgb, alpha);
+                return;
+            }
+
+            // ── Cel-shaded diffuse ──
+            // NdotL: 1 = facing light, -1 = away from light
+            // shadeBoundary = cos(shadeStartAngle):
+            //   85° → 0.087 (shade kicks in only near silhouette / back)
+            //   100° → -0.174 (more of surface stays "lit", esp on face)
+            float NdotL = dot(N, L);
+            float litFactor = smoothstep(
+                uShadeBoundary - uShadeSlope,
+                uShadeBoundary + uShadeSlope,
+                NdotL);
+            // mix(shadow, lit, t): shadow side at uShadeIntensity, lit at 1.0
+            float diffuseAmount = mix(uShadeIntensity, 1.0, litFactor);
+            vec3 diffuse = albedo * diffuseAmount * uDiffuseInten * uMainLightInten;
+
+            // ── Specular cel-shaded ──
+            // Half-vector
+            vec3 H = normalize(L + V);
+            float NdotH = max(0.0, dot(N, H));
+            float specPow = pow(NdotH, uSpecThreshPow);
+            float specMask = smoothstep(uSpecThreshMin, uSpecThreshMax, specPow);
+            // Specular tinted partly by albedo (SpecularAlbedoRate)
+            vec3 specColor = mix(vec3(1.0), albedo, uSpecAlbedoRate);
+            // Only when light is bright enough (LumaThreshold)
+            float lightLuma = dot(uLightColor, vec3(0.299, 0.587, 0.114)) * uLightIntensity;
+            float specGate = smoothstep(uSpecLumaThresh, uSpecLumaThresh + 0.1, lightLuma);
+            // Hair gets anisotropic-style: stretched specular along the up axis
+            float hairAniso = 1.0;
+            if (uIsHair == 1) {
+                // Cheap aniso approximation: bias along world Y
+                float anisoY = 1.0 - abs(N.y);
+                hairAniso = mix(0.6, 1.0, anisoY);
+            }
+            vec3 specular = specColor * (specMask * uSpecInten + uSpecIntenMin)
+                          * specGate * hairAniso;
+
+            // ── Back-edge rim light ──
+            // Bright outline when surface is near silhouette (NdotV ≈ 0)
+            // AND on the back side relative to light
+            float NdotV = max(0.0, dot(N, V));
+            float rimAngleDeg = degrees(acos(clamp(NdotV, 0.0, 1.0)));
+            float rimMask = smoothstep(uRimViewAngle - 5.0,
+                                       uRimViewAngle + 5.0,
+                                       rimAngleDeg);
+            // Vertical bias (RimLightRateY: more rim toward top)
+            rimMask *= mix(1.0, max(0.0, N.y) + 0.5, uRimRateY);
+            // Edge depth attenuation
+            rimMask *= 1.0 - uRimEdgeDepth * (1.0 - NdotV);
+            vec3 rim = vec3(rimMask) * uRimInten * uLightColor;
+
+            // ── Combine ──
+            vec3 finalColor = diffuse * uLightColor + specular + rim;
+            // sRGB encode (piecewise; safe for finalColor=0 unlike raw pow).
+            vec3 c = max(finalColor, vec3(0.0));
+            vec3 lo = c * 12.92;
+            vec3 hi = 1.055 * pow(max(c, vec3(0.0031308)), vec3(1.0/2.4)) - 0.055;
+            finalColor = mix(hi, lo, lessThanEqual(c, vec3(0.0031308)));
+
+            gl_FragColor = vec4(finalColor, alpha);
+        }`;
+
+    // Materials with a texture (face mask, hair) need alphaTest+transparent so
+    // the per-pixel alpha gets honored AND depth still writes for opaque
+    // pixels. Pure-color materials (Head skin, Nose) stay opaque so they
+    // render before any transparent overlay (per Three.js sort rules).
+    const wantsAlpha = params.baseTexture !== null;
+    const mat = new THREE.ShaderMaterial({
+        uniforms,
+        vertexShader,
+        fragmentShader,
+        transparent: wantsAlpha,
+        alphaTest: wantsAlpha ? 0.01 : 0.0,
+        depthWrite: true,
+        side: params.doubleSided ? THREE.DoubleSide : THREE.FrontSide,
+    });
+    return mat;
+}
+
+// ── Build scene ──────────────────────────────────────────────────────────
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+window.__renderer = renderer;  // debug hook
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.NoToneMapping;        // editor: IsPfxToneMapping false
+renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+
+// Background: warm cream/beige of the in-game Mii editor preview pane.
+// Sampled from a Ryujinx capture of the editor (~RGB 245, 233, 200).
+// In the engine this is a procedural gradient with subtle Y bands; for our
+// preview the solid color is close enough.
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xF5E9C8);
+window.__SCENE = scene;  // debug hook
+
+const camera = new THREE.PerspectiveCamera(
+    CAM_FOV,
+    canvas.clientWidth / canvas.clientHeight,
+    0.01,
+    CAM_FAR);
+camera.position.set(...CAM_POS);
+camera.lookAt(...CAM_TARGET);
+
+// Compute light direction from latitude/longitude
+// lat 40° = 40° above horizon. lon -20° = 20° azimuth.
+// Direction TOWARD light source from origin:
+const latRad = LIGHT_LAT_DEG * Math.PI / 180;
+const lonRad = LIGHT_LON_DEG * Math.PI / 180;
+const lightDirVec = new THREE.Vector3(
+    Math.sin(lonRad) * Math.cos(latRad),
+    Math.sin(latRad),
+    Math.cos(lonRad) * Math.cos(latRad)
+);
+
+const controls = new OrbitControls(camera, canvas);
+controls.target.set(...CAM_TARGET);
+controls.enableDamping = true;
+controls.dampingFactor = 0.1;
+controls.minDistance = 0.5;
+controls.maxDistance = 30.0;
+controls.update();
+
+// Post-processing: bloom + output
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bloom = new UnrealBloomPass(
+    new THREE.Vector2(canvas.clientWidth, canvas.clientHeight),
+    BLOOM_INTENSITY,    // strength
+    BLOOM_RADIUS,       // radius
+    BLOOM_THRESHOLD     // threshold
+);
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
+
+// ── GLB loading + per-mesh material replacement ──────────────────────────
+const glbUrl = window.MII_GLB_URL || (new URLSearchParams(location.search)).get('glb');
+if (!glbUrl) {
+    console.error('No GLB URL provided (set window.MII_GLB_URL)');
+} else {
+    const loader = new GLTFLoader();
+    window.__OLD_MATS = [];  // debug
+    loader.load(glbUrl, (gltf) => {
+        gltf.scene.traverse((node) => {
+            if (!node.isMesh) return;
+            const name = node.name || '';
+            // Detect mesh class by name
+            const isFace = /^(Head|Mask|NoseLine|Mole|Wrinkle)/i.test(name);
+            const isHair = /^(Hair|Beard|Mustache)/i.test(name);
+            const isGlass = /^(Trs|Lens|Glass)/i.test(name) || /Trs/.test(name);
+
+            // Extract base color + texture from existing material
+            const oldMat = node.material;
+            // Hair/3D-beard meshes were KHR_materials_unlit in the GLB
+            // (loaded as MeshBasicMaterial). Stay unlit so the strand
+            // texture (which bakes in the picked hair color) shows
+            // through at full intensity — toon-attenuating it would
+            // dim hair to 56-75% of texture color, which combined with a
+            // dark skin tone makes hair appear to "blend into" the face.
+            const isUnlit = oldMat && oldMat.isMeshBasicMaterial;
+            let baseColor = [1, 1, 1];
+            let baseTexture = null;
+            let alpha = 1.0;
+            let doubleSided = false;
+            if (oldMat) {
+                if (oldMat.color) baseColor = [oldMat.color.r, oldMat.color.g, oldMat.color.b];
+                if (oldMat.map) baseTexture = oldMat.map;
+                if (oldMat.opacity !== undefined) alpha = oldMat.opacity;
+                if (oldMat.transparent !== undefined && oldMat.transparent && alpha === 1.0) {
+                    // Get alpha from baseColor.a if available (glTF uses 4-component baseColorFactor)
+                    if (oldMat.userData?.gltfExtensions?.baseColorFactor) {
+                        alpha = oldMat.userData.gltfExtensions.baseColorFactor[3];
+                    }
+                }
+                doubleSided = oldMat.side === THREE.DoubleSide;
+            }
+            window.__OLD_MATS.push({
+                name, type: oldMat ? oldMat.type : null,
+                color: oldMat && oldMat.color ? [oldMat.color.r, oldMat.color.g, oldMat.color.b] : null,
+                map: oldMat && oldMat.map ? 'yes' : 'no',
+                opacity: oldMat ? oldMat.opacity : null,
+                transparent: oldMat ? oldMat.transparent : null,
+                userData: oldMat ? JSON.stringify(oldMat.userData) : null,
+            });
+            // For glass meshes (transparent lens), use lower alpha
+            if (isGlass) alpha = Math.min(alpha, 0.35);
+
+            const newMat = makeToonMaterial({
+                isFace,
+                isHair,
+                baseColor,
+                baseTexture,
+                alpha,
+                doubleSided,
+                unlit: isUnlit,
+            });
+            // Patch lightDir on every frame via animation loop
+            node.userData.toonMat = newMat;
+            node.material = newMat;
+        });
+        scene.add(gltf.scene);
+        // Recenter camera target on the model bounds
+        const box = new THREE.Box3().setFromObject(gltf.scene);
+        const size = box.getSize(new THREE.Vector3());
+        const center = box.getCenter(new THREE.Vector3());
+        // The editor frames at a specific position — leave defaults
+    }, undefined, (err) => {
+        console.error('GLB load error:', err);
+    });
+}
+
+// ── Render loop ──────────────────────────────────────────────────────────
+function onResize() {
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    renderer.setSize(w, h, false);
+    composer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', onResize);
+onResize();
+
+// Bloom is off by default. UnrealBloomPass + the toon shader's high-intensity
+// specular tends to wash out the cel-shaded look, and the bgyml says
+// IsPfxBloom=true for HDR — but our LDR pipeline already has bright peaks
+// without needing additive bloom. Set window.MII_BLOOM=true to enable.
+const useBloom = window.MII_BLOOM === true;
+
+function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    // Update light direction uniform on every toon material
+    scene.traverse((n) => {
+        if (n.material && n.material.uniforms && n.material.uniforms.uLightDir) {
+            n.material.uniforms.uLightDir.value.copy(lightDirVec);
+        }
+    });
+    if (useBloom) {
+        composer.render();
+    } else {
+        renderer.render(scene, camera);
+    }
+}
+animate();
+</script>
+</body>
+</html>
