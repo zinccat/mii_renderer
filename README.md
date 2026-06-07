@@ -4,6 +4,8 @@ Gradio demo that composes a Mii face texture from extracted Tomodachi Life:
 Living the Dream game assets and applies it to an extracted GLB head mesh, shown
 in an interactive 3D viewer.
 
+**🤗 Try it live:** [zinccat/mii-face-builder on Hugging Face Spaces](https://huggingface.co/spaces/zinccat/mii-face-builder)
+
 ![Demo screenshot](attachments/screenshot.png)
 
 A grid of randomized faces, and the expression presets in motion:
